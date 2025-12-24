@@ -6,27 +6,27 @@ export const FeaturesCarousel = () => {
 
   const features = [
     {
-      icon: <Smartphone className="text-indigo-600" size={48} />,
+      icon: <Smartphone className="text-blue-600" size={48} />,
       title: 'Organize your tools',
       description: 'Keep your apps, subscriptions, and tech stack in one simple space.'
     },
     {
-      icon: <Globe className="text-indigo-600" size={48} />,
+      icon: <Globe className="text-blue-600" size={48} />,
       title: 'Discover what works',
       description: 'Find new tools tailored to your workflow, curated for freelancers and remote workers.'
     },
     {
-      icon: <Gift className="text-indigo-600" size={48} />,
+      icon: <Gift className="text-blue-600" size={48} />,
       title: 'Get Rewarded',
       description: 'Earn perks, gift cards and cashback just for staying productive.'
     }
   ];
 
   return (
-    <section className="py-20 bg-pink-50">
-      <div className="max-w-7xl mx-auto px-8 sm:px-12 lg:px-20">
+    <section className="py-20 bg-pink-50 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">EVERYTHING IN ONE PLACE</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">EVERYTHING IN ONE PLACE</h2>
         </div>
         
         <div className="relative h-[550px] flex items-center justify-center mx-12 mb-16" style={{ perspective: '2000px' }}>
@@ -87,10 +87,10 @@ export const FeaturesCarousel = () => {
                     
                     {/* Text Section */}
                     <div className="text-center">
-                      <h3 className={`font-bold mb-3 transition-all ${
+                      <h3 className={`font-bold mb-3 transition-all text-black ${
                         isActive ? 'text-2xl' : 'text-xl'
                       }`}>{feature.title}</h3>
-                      <p className={`text-gray-600 transition-all ${
+                      <p className={`text-black transition-all ${
                         isActive ? 'text-base leading-relaxed' : 'text-sm'
                       }`}>
                         {feature.description}
@@ -110,7 +110,7 @@ export const FeaturesCarousel = () => {
               key={index}
               onClick={() => setFeaturesIndex(index)}
               className={`rounded-full transition-all duration-300 ${
-                index === featuresIndex ? 'bg-indigo-600 w-10 h-3' : 'bg-gray-400 w-3 h-3 hover:bg-gray-500'
+                index === featuresIndex ? 'bg-black w-10 h-3' : 'bg-gray-400 w-3 h-3 hover:bg-gray-500'
               }`}
             />
           ))}

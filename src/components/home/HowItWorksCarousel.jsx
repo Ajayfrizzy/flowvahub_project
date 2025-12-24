@@ -23,7 +23,7 @@ export const HowItWorksCarousel = () => {
     }
   ];
 
-  // Auto-play effect for How It Works carousel
+  // Auto-play effect
   useEffect(() => {
     if (isPlaying) {
       const interval = setInterval(() => {
@@ -34,10 +34,10 @@ export const HowItWorksCarousel = () => {
   }, [isPlaying, howItWorksSteps.length]);
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">SIMPLE, REWARDING, CALM</h2>
+          <h2 className="text-3xl font-bold text-black mb-4">SIMPLE, REWARDING, CALM</h2>
         </div>
 
         <div className="flex gap-4 items-stretch mb-8">
@@ -50,19 +50,21 @@ export const HowItWorksCarousel = () => {
                   setHowItWorksIndex(index);
                   setIsPlaying(false); // Pause when manually clicking
                 }}
-                className={`cursor-pointer transition-all duration-300 rounded-2xl p-8 ${
+                className={`cursor-pointer transition-all duration-300 rounded-2xl p-8 space-y-50 ${
                   isActive 
-                    ? 'flex-[2] bg-indigo-600 text-white shadow-xl' 
-                    : 'flex-1 bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'flex-2 bg-black text-white shadow-xl' 
+                    : 'flex-1 bg-gray-100 text-black hover:bg-gray-200'
                 }`}
               >
-                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mb-6 ${
-                  isActive ? 'bg-white text-indigo-600' : 'bg-white/50 text-gray-900'
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-3xl font-bold ${
+                  isActive ? 'bg-white text-black' : 'bg-white/50 text-black'
                 }`}>
                   {step.number}
                 </div>
-                <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
-                {isActive && <p className="text-white/90">{step.description}</p>}
+                <div>
+                <h3 className="text-3xl font-semibold ">{step.title}</h3>
+                {isActive && <p className="text-white/90 text-xl">{step.description}</p>}
+                </div>
               </div>
             );
           })}
@@ -70,6 +72,14 @@ export const HowItWorksCarousel = () => {
 
         {/* Dots Navigation with Play/Pause */}
         <div className="flex justify-center items-center gap-6">
+          {/* Play/Pause Button */}
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors shadow-lg"
+          >
+            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+          </button>
+
           {/* Dots */}
           <div className="flex gap-3">
             {howItWorksSteps.map((_, index) => {
@@ -90,14 +100,6 @@ export const HowItWorksCarousel = () => {
               );
             })}
           </div>
-
-          {/* Play/Pause Button */}
-          <button
-            onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors shadow-lg"
-          >
-            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-          </button>
         </div>
       </div>
     </section>

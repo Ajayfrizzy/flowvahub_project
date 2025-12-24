@@ -48,7 +48,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center gap-8">
-            <Link to="/" className="text-2xl font-bold text-indigo-600">
+            <Link to="/" className="text-2xl font-bold text-black">
               Flowva
             </Link>
             
@@ -57,26 +57,37 @@ export const Navbar = () => {
               {navItems.map((item) => (
                 <div
                   key={item.name}
-                  className="relative"
-                  onMouseEnter={() => setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  className="relative group"
                 >
-                  <button className="flex items-center gap-1 text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+                  <button 
+                    className="flex items-center gap-1 text-gray-700 hover:text-black transition-colors font-medium"
+                    onMouseEnter={() => setActiveDropdown(item.name)}
+                  >
                     {item.name}
                     <ChevronDown size={16} />
                   </button>
                   
                   {item.links.length > 0 && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-lg py-2 min-w-[180px] border border-gray-100">
-                      {item.links.map((link) => (
-                        <Link
-                          key={link.name}
-                          to={link.path}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
-                        >
-                          {link.name}
-                        </Link>
-                      ))}
+                    <div 
+                      className="absolute top-full left-0 pt-2"
+                      onMouseEnter={() => setActiveDropdown(item.name)}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
+                      <div className="bg-white shadow-lg rounded-lg py-2 min-w-[180px] border border-gray-100">
+                        {item.links.map((link) => (
+                          <Link
+                            key={link.name}
+                            to={link.path}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                            onClick={() => {
+                              setActiveDropdown(null);
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }}
+                          >
+                            {link.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -84,13 +95,13 @@ export const Navbar = () => {
             </div>
           </div>
 
-          {/* Auth Buttons */}
+         
           <div className="flex items-center gap-4">
             {user ? (
               <>
                 <Link
                   to="/dashboard"
-                  className="flex items-center gap-2 text-gray-700 hover:text-indigo-600 transition-colors"
+                  className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors"
                 >
                   <LayoutDashboard size={20} />
                   Dashboard
@@ -105,12 +116,17 @@ export const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/login" className="text-gray-700 hover:text-indigo-600 transition-colors font-medium">
+                <Link 
+                  to="/login" 
+                  className="text-gray-700 hover:text-black transition-colors font-medium"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
                   Login
                 </Link>
                 <Link
                   to="/signup"
-                  className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+                  className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-900 transition-colors font-medium"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   Sign Up
                 </Link>

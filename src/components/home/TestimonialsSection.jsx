@@ -65,23 +65,24 @@ export const TestimonialsSection = () => {
   const totalTestimonyPages = Math.ceil(testimonials.length / testimoniesPerPage);
   const currentTestimonies = testimonials.slice(testimonyIndex * testimoniesPerPage, (testimonyIndex + 1) * testimoniesPerPage);
 
+  const cardColors = ['bg-green-100', 'bg-pink-100', 'bg-blue-100'];
+
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gray-50 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">JOIN A GROWING COMMUNITY</h2>
+          <h2 className="text-[4rem] font-bold text-black mb-4">JOIN A GROWING COMMUNITY</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-3xl font-semibold items-start">
           {currentTestimonies.map((testimonial, index) => (
-            <div key={index} className="bg-white p-8 rounded-xl shadow-lg">
-              <p className="text-sm text-gray-500 mb-4">Testimonies</p>
+            <div key={index} className={`${cardColors[index % 3]} p-8 rounded-xl shadow-lg h-auto`}>
+                  <p className="text-black mb-6 italic">&quot;{testimonial.testimony}&quot;</p>
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                  <Star key={i} size={16} className="fill-black text-black" />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic">&quot;{testimonial.testimony}&quot;</p>
               <div>
                 <p className="font-semibold text-gray-900">{testimonial.name}</p>
                 <p className="text-sm text-gray-500">{testimonial.occupation}</p>
@@ -90,14 +91,14 @@ export const TestimonialsSection = () => {
           ))}
         </div>
 
-        {/* Dots Navigation */}
+        
         <div className="flex justify-center gap-2 mt-8">
           {[...Array(totalTestimonyPages)].map((_, index) => (
             <button
               key={index}
               onClick={() => setTestimonyIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === testimonyIndex ? 'bg-indigo-600 w-8' : 'bg-gray-300'
+              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
+                index === testimonyIndex ? 'bg-black w-8' : 'bg-gray-300'
               }`}
             />
           ))}

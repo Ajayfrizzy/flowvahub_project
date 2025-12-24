@@ -17,22 +17,22 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
         <div className="text-center mb-12 pb-12 border-b border-gray-800">
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto mb-4">
-            <div className="flex gap-2">
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-4 border border-purple-400 rounded-full">
+            <div className="flex gap-2 bg-gray-800 rounded-full p-6">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:border-indigo-500"
+                className="flex-1 px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none"
                 required
               />
               <button
                 type="submit"
-                className="bg-indigo-600 px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
+                className="bg-white text-black px-6 py-3 hover:bg-black hover:text-white flex items-center gap-2 rounded-full transition ease-in-out cursor-pointer"
               >
-                <Send size={20} />
                 Submit
+                <Send size={20} />
               </button>
             </div>
           </form>
@@ -43,18 +43,16 @@ export const Footer = () => {
 
         {/* Main Footer Content */}
         <div className="mb-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Flowva</h3>
-              <p className="text-gray-400 max-w-md">
+          <div className="flex flex-wrap justify-center gap-8 space-x-5">
+            {/* Logo */}
+            <div className='space-y-6'>
+              <h3 className="text-2xl font-bold">Flowva</h3>
+              <p className="text-gray-400 max-w-xs">
                 The smart way to manage your digital life and get rewarded
               </p>
+            <p className="text-gray-500">© 2025 Flowva</p>
             </div>
-            <p className="text-gray-500 mt-4 md:mt-0">© 2025 Flowva</p>
-          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {/* Hub */}
             <div>
               <h4 className="font-semibold mb-4">Hub</h4>
               <ul className="space-y-2 text-gray-400">
@@ -105,23 +103,28 @@ export const Footer = () => {
 
         {/* Social Media Links */}
         <div className="pt-8 border-t border-gray-800">
-          <div className="flex justify-center gap-6">
-            <a href="https://www.facebook.com/share/1DKr8atT1i/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+          <div className="flex flex-wrap justify-center gap-6">
+            <a href="https://www.facebook.com/share/1DKr8atT1i/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <Facebook size={24} />
+              <span>Facebook</span>
             </a>
-            <a href="https://x.com/FlowvaHub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://x.com/FlowvaHub" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <Twitter size={24} />
+              <span>X (formerly twitter)</span>
             </a>
-            <a href="https://www.instagram.com/flowvahub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/flowvahub" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <Instagram size={24} />
+              <span>Instagram</span>
             </a>
-            <a href="https://www.linkedin.com/company/flowva/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/company/flowva/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <Linkedin size={24} />
+              <span>LinkedIn</span>
             </a>
-            <a href="https://www.tiktok.com/@flowva.hub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+            <a href="https://www.tiktok.com/@flowva.hub" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
               </svg>
+              <span>TikTok</span>
             </a>
           </div>
         </div>
