@@ -32,19 +32,52 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const signUp = async (email, password) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-    return { data, error };
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/dashboard`
+        }
+      });
+      
+      if (error) {
+        console.error('Supabase signup error:', error);
+        console.error('Error details:', {
+          message: error.message,
+          status: error.status,
+          code: error.code
+        });
+      }
+      
+      return { data, error };
+    } catch (err) {
+      console.error('Unexpected signup error:', err);
+      return { data: null, error: err };
+    }
   };
 
   const signIn = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    return { data, error };
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      
+      if (error) {
+        console.error('Supabase signin error:', error);
+        console.error('Error details:', {
+          message: error.message,
+          status: error.status,
+          code: error.code
+        });
+      }
+      
+      return { data, error };
+    } catch (err) {
+      console.error('Unexpected signin error:', err);
+      return { data: null, error: err };
+    }
   };
 
   const signOut = async () => {
