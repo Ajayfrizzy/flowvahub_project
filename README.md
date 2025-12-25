@@ -12,6 +12,7 @@ A modern full-stack web application built with React and Supabase that helps use
 - **Real-time Stats**: Track tool count, monthly costs, and reward points
 - **Toast Notifications**: User-friendly success/error messages for all actions
 - **Error Boundaries**: Graceful error handling with fallback UI
+- **Password Visibility Toggle**: Eye icon for showing/hiding passwords on login and signup forms
 
 ### Technical Highlights
 - **Real Supabase Integration**: PostgreSQL database with Row Level Security (RLS)
@@ -19,7 +20,13 @@ A modern full-stack web application built with React and Supabase that helps use
 - **Modular Architecture**: 20+ reusable React components with clear separation of concerns
 - **Custom Hooks**: `useAuth`, `useToast` for clean code organization
 - **Protected Routes**: Secure dashboard and library pages for authenticated users
-- **Responsive Design**: Mobile-first UI with Tailwind CSS
+- **Fully Responsive Design**: Comprehensive mobile optimization with:
+  - Hamburger menu with all navigation links for mobile devices
+  - Column layouts for feature carousels and how-it-works sections on mobile
+  - Swipeable single-card testimonials on mobile (3 cards on desktop)
+  - Responsive typography with multiple breakpoints (sm, md, lg, xl)
+  - Mobile-optimized toast notifications
+  - Auto scroll-to-top on login/signup page navigation
 
 ## 🛠️ Tech Stack
 
@@ -279,11 +286,11 @@ const { data: existing } = await supabase
 ```
 src/
 ├── components/
-│   ├── home/          # 8 modular home sections
-│   ├── brands/        # 8 brand landing sections
-│   ├── Navbar.jsx     # Navigation with dropdowns
-│   ├── Footer.jsx     # Site footer
-│   ├── Toast.jsx      # Notification system
+│   ├── home/          # 8 modular home sections (mobile-responsive)
+│   ├── brands/        # 8 brand landing sections (mobile-responsive)
+│   ├── Navbar.jsx     # Navigation with dropdowns + mobile hamburger menu
+│   ├── Footer.jsx     # Responsive site footer
+│   ├── Toast.jsx      # Notification system (mobile-optimized)
 │   └── ErrorBoundary.jsx  # Error catching
 ├── context/
 │   ├── AuthContext.jsx    # Global auth state
@@ -318,7 +325,42 @@ useEffect(() => {
 useEffect(() => {
   filterTools();
 }, [searchQuery, selectedCategory, tools]);
+
+// Scroll to top on page mount
+useEffect(() => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}, []);
 ```
+
+### 4. Mobile Responsiveness
+
+**Navbar:**
+- Desktop: Horizontal navigation with icon-based dropdown menus
+- Mobile: Hamburger menu (Menu/X icons) with:
+  - All navigation links displayed as simple list items with icons
+  - Auth buttons (Login/Signup or Dashboard/Sign Out)
+  - Smooth transitions and auto-close on link click
+
+**Feature Sections:**
+- FeaturesCarousel: 3D carousel on desktop, vertical column on mobile
+- HowItWorksCarousel: Horizontal expandable cards on desktop, stacked cards on mobile
+- TestimonialsSection: 3 cards side-by-side on desktop, 1 swipeable card on mobile
+
+**Touch Interactions:**
+```javascript
+// Swipe detection for mobile testimonials
+const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
+const handleTouchEnd = () => {
+  if (touchStart - touchEnd > 75) nextSlide();  // Swipe left
+  if (touchStart - touchEnd < -75) prevSlide(); // Swipe right
+};
+```
+
+**Responsive Breakpoints:**
+- `sm:` 640px - Small tablets
+- `md:` 768px - Tablets (hamburger menu switches to desktop nav)
+- `lg:` 1024px - Desktop
+- `xl:` 1280px - Large desktop
 
 ## ⚙️ Assumptions & Design Decisions
 
@@ -383,6 +425,10 @@ useEffect(() => {
 - Internationalization (i18n)
 - Performance monitoring (Sentry, LogRocket)
 - CI/CD pipeline
+- Native mobile apps (React Native)
+- Desktop app (Electron)
+- Gesture controls optimization for mobile
+- Improved mobile keyboard handling
 
 
 ## 🐛 Troubleshooting
