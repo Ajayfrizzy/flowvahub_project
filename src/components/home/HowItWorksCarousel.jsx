@@ -34,13 +34,14 @@ export const HowItWorksCarousel = () => {
   }, [isPlaying, howItWorksSteps.length]);
 
   return (
-    <section className="py-20 bg-white px-4 sm:px-6 lg:px-8">
+    <section className="py-12 sm:py-16 md:py-20 bg-white px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-black mb-4">SIMPLE, REWARDING, CALM</h2>
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4">SIMPLE, REWARDING, CALM</h2>
         </div>
 
-        <div className="flex gap-4 items-stretch mb-8">
+        {/* Desktop Horizontal Layout */}
+        <div className="hidden md:flex gap-4 items-stretch mb-8">
           {howItWorksSteps.map((step, index) => {
             const isActive = index === howItWorksIndex;
             return (
@@ -70,18 +71,36 @@ export const HowItWorksCarousel = () => {
           })}
         </div>
 
+        {/* Mobile Column Layout */}
+        <div className="md:hidden space-y-4 mb-8">
+          {howItWorksSteps.map((step, index) => (
+            <div
+              key={step.number}
+              className="bg-black text-white rounded-2xl p-6 shadow-lg"
+            >
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center text-xl font-bold shrink-0">
+                  {step.number}
+                </div>
+                <h3 className="text-xl font-semibold">{step.title}</h3>
+              </div>
+              <p className="text-white/90 text-sm pl-14">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
         {/* Dots Navigation with Play/Pause */}
         <div className="flex justify-center items-center gap-6">
           {/* Play/Pause Button */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors shadow-lg"
+            className="md:flex hidden items-center gap-2 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition-colors shadow-lg"
           >
             {isPlaying ? <Pause size={18} /> : <Play size={18} />}
           </button>
 
           {/* Dots */}
-          <div className="flex gap-3">
+          <div className="md:flex gap-3 hidden">
             {howItWorksSteps.map((_, index) => {
               const isActive = index === howItWorksIndex;
               return (

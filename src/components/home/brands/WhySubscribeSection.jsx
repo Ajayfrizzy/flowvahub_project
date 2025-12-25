@@ -8,28 +8,25 @@ export const WhySubscribeSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
           {/* Trusted by Leading Products */}
-          <div className="bg-white rounded-3xl p-10 text-left">
-            <h3 className="text-xl font-bold text-black mb-6 leading-tight">
-              TRUSTED BY LEADING<br />
-              PRODUCTS WITH<br />
-              ORGANIC MARKETING<br />
-              SUCCESS
+          <div className="bg-white rounded-3xl p-8 sm:p-10 text-left">
+            <h3 className="text-lg sm:text-xl font-bold text-black mb-6 leading-tight">
+              TRUSTED BY LEADING PRODUCTS WITH ORGANIC MARKETING SUCCESS
             </h3>
           </div>
 
           {/* Purple and Pink Cards*/}
-          <div className="flex gap-6">
-            <div className="bg-purple-500 rounded-3xl p-8 text-left">
-              <div className="text-4xl mb-4">💎</div>
-              <h4 className="text-lg font-bold text-white mb-2">Premium Value</h4>
-              <p className="text-purple-100 text-sm">
+          <div className="flex flex-col sm:flex-row gap-6">
+            <div className="bg-purple-500 rounded-3xl p-6 sm:p-8 text-left">
+              <div className="text-3xl sm:text-4xl mb-4">💎</div>
+              <h4 className="text-base sm:text-lg font-bold text-white mb-2">Premium Value</h4>
+              <p className="text-purple-100 text-xs sm:text-sm">
                 Access exclusive features and rewards
               </p>
             </div>
-            <div className="bg-pink-500 rounded-3xl p-8 text-left">
-              <div className="text-4xl mb-4">🎁</div>
-              <h4 className="text-lg font-bold text-white mb-2">Special Offers</h4>
-              <p className="text-pink-100 text-sm">
+            <div className="bg-pink-500 rounded-3xl p-6 sm:p-8 text-left">
+              <div className="text-3xl sm:text-4xl mb-4">🎁</div>
+              <h4 className="text-base sm:text-lg font-bold text-white mb-2">Special Offers</h4>
+              <p className="text-pink-100 text-xs sm:text-sm">
                 Get amazing deals and discounts
               </p>
             </div>

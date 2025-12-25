@@ -15,9 +15,7 @@ export const FinalCTASection = () => {
           </p>
           <Link
             to="/signup"
-            className="bg-white text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-pink-300 hover:text-white transition-colors"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
+            className="bg-white text-black px-8 py-4 rounded-full md:text-lg sm:text-sm font-semibold hover:bg-pink-300 hover:text-white transition-colors">
             Unlock Rewards Now
           </Link>
         </div>

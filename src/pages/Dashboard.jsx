@@ -1,30 +1,47 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 import { supabase } from '../lib/supabase';
 import { Plus, Trash2, Search, Loader, Package, Gift, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Dashboard = () => {
   const { user } = useAuth();
+  const { success, error: showError } = useToast();
   const [myTools, setMyTools] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newTool, setNewTool] = useState({ name: '', category: '', cost: '' });
   const [error, setError] = useState('');
   const [totalRewards, setTotalRewards] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    fetchMyTools();
-    fetchRewards();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchMyTools();
+      fetchRewards();
+    }
   }, [user]);
 
   const fetchMyTools = async () => {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from('user_tools')
         .select(`
-          *,
-          tools (*)
+          id,
+          monthly_cost,
+          created_at,
+          tools (
+            id,
+            name,
+            category,
+            description
+          )
         `)
         .eq('user_id', user.id)
         .order('created_at', { ascending: false });
@@ -32,6 +49,8 @@ export const Dashboard = () => {
       if (error) throw error;
       setMyTools(data || []);
     } catch (err) {
+      console.error('Error fetching tools:', err);
+      showError('Failed to load your tools. Please refresh the page.');
       setError(err.message);
     } finally {
       setLoading(false);
@@ -56,6 +75,7 @@ export const Dashboard = () => {
   const handleAddTool = async (e) => {
     e.preventDefault();
     setError('');
+    setSubmitting(true);
 
     try {
       // First, add tool to tools table
@@ -89,16 +109,23 @@ export const Dashboard = () => {
       // Award points for adding a tool
       await awardPoints(10);
 
+      success(`${newTool.name} added successfully! +10 points`);
       setNewTool({ name: '', category: '', cost: '' });
       setShowAddModal(false);
       fetchMyTools();
       fetchRewards();
     } catch (err) {
+      console.error('Error adding tool:', err);
+      showError(err.message || 'Failed to add tool. Please try again.');
       setError(err.message);
+    } finally {
+      setSubmitting(false);
     }
   };
 
-  const handleRemoveTool = async (userToolId) => {
+  const handleRemoveTool = async (userToolId, toolName) => {
+    if (!confirm(`Remove ${toolName} from your tools?`)) return;
+
     try {
       const { error } = await supabase
         .from('user_tools')
@@ -106,8 +133,11 @@ export const Dashboard = () => {
         .eq('id', userToolId);
 
       if (error) throw error;
+      success(`${toolName} removed successfully`);
       fetchMyTools();
     } catch (err) {
+      console.error('Error removing tool:', err);
+      showError('Failed to remove tool. Please try again.');
       setError(err.message);
     }
   };
@@ -123,12 +153,19 @@ export const Dashboard = () => {
       if (existing) {
         await supabase
           .from('user_rewards')
-          .update({ points: existing.points + points })
+          .update({ 
+            points: existing.points + points,
+            total_earned: (existing.total_earned || 0) + points
+          })
           .eq('user_id', user.id);
       } else {
         await supabase
           .from('user_rewards')
-          .insert([{ user_id: user.id, points }]);
+          .insert([{ 
+            user_id: user.id, 
+            points,
+            total_earned: points
+          }]);
       }
     } catch (err) {
       console.error('Error awarding points:', err);
@@ -137,8 +174,11 @@ export const Dashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-16 flex items-center justify-center">
-        <Loader className="animate-spin text-blue-600" size={48} />
+      <div className="min-h-screen pt-16 flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Loader className="animate-spin text-blue-600 mx-auto mb-4" size={48} />
+          <p className="text-gray-600">Loading your dashboard...</p>
+        </div>
       </div>
     );
   }
@@ -149,7 +189,7 @@ export const Dashboard = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900">
-            Welcome back, {user?.user_metadata?.full_name || 'User'}!
+            Welcome back, {user?.user_metadata?.name || user?.email?.split('@')[0] || 'User'}!
           </h1>
           <p className="text-gray-600 mt-2">Manage your tools and track your rewards</p>
         </div>
@@ -246,9 +286,12 @@ export const Dashboard = () => {
                     <p className="text-sm text-gray-600 mt-1">
                       {userTool.tools?.category} • ${userTool.monthly_cost || 0}/month
                     </p>
+                    {userTool.tools?.description && (
+                      <p className="text-sm text-gray-500 mt-1">{userTool.tools.description}</p>
+                    )}
                   </div>
                   <button
-                    onClick={() => handleRemoveTool(userTool.id)}
+                    onClick={() => handleRemoveTool(userTool.id, userTool.tools?.name)}
                     className="text-red-600 hover:text-red-700 p-2 hover:bg-red-50 rounded-lg transition-colors"
                   >
                     <Trash2 size={20} />
@@ -276,6 +319,7 @@ export const Dashboard = () => {
                   onChange={(e) => setNewTool({ ...newTool, name: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
+                  disabled={submitting}
                 />
               </div>
               <div>
@@ -287,6 +331,7 @@ export const Dashboard = () => {
                   onChange={(e) => setNewTool({ ...newTool, category: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
+                  disabled={submitting}
                 >
                   <option value="">Select a category</option>
                   <option value="Productivity">Productivity</option>
@@ -308,19 +353,26 @@ export const Dashboard = () => {
                   onChange={(e) => setNewTool({ ...newTool, cost: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="0.00"
+                  disabled={submitting}
                 />
               </div>
               <div className="flex gap-3 mt-6">
                 <button
                   type="submit"
-                  className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  disabled={submitting}
+                  className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Add Tool
+                  {submitting && <Loader className="animate-spin" size={16} />}
+                  {submitting ? 'Adding...' : 'Add Tool'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => setShowAddModal(false)}
-                  className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+                  onClick={() => {
+                    setShowAddModal(false);
+                    setError('');
+                  }}
+                  disabled={submitting}
+                  className="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition-colors disabled:opacity-50"
                 >
                   Cancel
                 </button>
