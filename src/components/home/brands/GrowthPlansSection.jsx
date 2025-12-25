@@ -11,13 +11,12 @@ export const GrowthPlansSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Basic Plan */}
           <div className="bg-white rounded-3xl p-8 border-2 border-gray-200">
-            <div className="text-center mb-6">
-              <div className="text-sm text-gray-500 mb-2">Basic</div>
-              <div className="text-4xl font-bold text-black mb-2">€30</div>
-              <div className="text-sm text-gray-500">/Month</div>
+            <div className="mb-6">
+              <div className="text-sm text-gray-500 mb-5">Basic</div>
+              <div className="text-4xl font-bold text-black mb-2">$30/Month</div>
             </div>
-            <button className="w-full bg-black text-white py-3 rounded-full font-semibold mb-6 hover:bg-gray-800 transition-colors">
-              Get Started →
+            <button className="w-full bg-black text-white py-3 rounded-full font-semibold mb-6 hover:bg-blue-500 hover:text-black transition-colors">
+              Get Started
             </button>
             <p className="text-sm text-gray-600 mb-6 text-center">
               Perfect for startups testing the waters with brand engagement.
@@ -44,18 +43,17 @@ export const GrowthPlansSection = () => {
 
           {/* Pro Plan */}
           <div className="bg-purple-600 rounded-3xl p-8 relative transform md:scale-105 shadow-2xl">
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <span className="bg-yellow-400 text-black text-xs font-bold px-4 py-1 rounded-full">
+            <div className="absolute top-6 right-2 transform -translate-y-1/2">
+              <span className="bg-yellow-400 text-black text-xs font-bold px-4 py-3 rounded-bl-2xl rounded-tr-2xl">
                 MOST POPULAR
               </span>
             </div>
-            <div className="text-center mb-6">
-              <div className="text-sm text-purple-200 mb-2">Pro</div>
-              <div className="text-4xl font-bold text-white mb-2">€75</div>
-              <div className="text-sm text-purple-200">/Month</div>
+            <div className="mb-6">
+              <div className="text-sm text-purple-200 mb-5">Pro</div>
+              <div className="text-4xl font-bold text-white mb-5">$75/Month</div>
             </div>
-            <button className="w-full bg-white text-purple-600 py-3 rounded-full font-semibold mb-6 hover:bg-gray-100 transition-colors">
-              Get Started →
+            <button className="w-full bg-white text-purple-600 py-3 rounded-full font-semibold mb-6 hover:bg-yellow-500 hover:text-black transition-colors">
+              Get Started
             </button>
             <p className="text-sm text-purple-100 mb-6 text-center">
               Ideal for growing brands looking to maximize reach and engagement.
@@ -90,13 +88,12 @@ export const GrowthPlansSection = () => {
 
           {/* Enterprise Plan */}
           <div className="bg-white rounded-3xl p-8 border-2 border-gray-200">
-            <div className="text-center mb-6">
-              <div className="text-sm text-gray-500 mb-2">Enterprise</div>
-              <div className="text-4xl font-bold text-black mb-2">€150</div>
-              <div className="text-sm text-gray-500">/Month</div>
+            <div className="mb-6">
+              <div className="text-sm text-gray-500 mb-5">Enterprise</div>
+              <div className="text-4xl font-bold text-black mb-2">$150/Month</div>
             </div>
-            <button className="w-full bg-black text-white py-3 rounded-full font-semibold mb-6 hover:bg-gray-800 transition-colors">
-              Get Started →
+            <button className="w-full bg-black text-white py-3 rounded-full font-semibold mb-6 hover:bg-blue-500 hover:text-black transition-colors">
+              Get Started
             </button>
             <p className="text-sm text-gray-600 mb-6 text-center">
               Comprehensive solution for established brands seeking maximum impact.

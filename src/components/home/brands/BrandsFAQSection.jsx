@@ -55,9 +55,9 @@ export const BrandsFAQSection = () => {
             >
               <div className="flex items-start gap-3">
                 {openFaqs.includes(index) ? (
-                  <ChevronDown size={20} className="text-black mt-1 shrink-0" />
+                  <ChevronDown size={20} className="text-black mt-1 shrink-0 fill-current" fill="currentColor" />
                 ) : (
-                  <ChevronRight size={20} className="text-black mt-1 shrink-0" />
+                  <ChevronRight size={20} className="text-black mt-1 shrink-0 fill-current" fill="currentColor" />
                 )}
                 <div className="flex-1">
                   <h3 className="font-semibold text-black mb-2">{faq.question}</h3>

@@ -50,9 +50,6 @@ export const AmplifySection = () => {
 
           {/* Card 3 - Yellow */}
           <div className="bg-yellow-100 rounded-3xl p-10 text-left relative overflow-hidden min-h-[280px]">
-            <div className="absolute top-5 right-5 bg-yellow-300 px-5 py-2 rounded-full">
-              <span className="text-sm font-bold text-black">BOOST</span>
-            </div>
             <h3 className="text-xl font-bold text-black mb-4">
               Boost Your Visibility
             </h3>
@@ -80,7 +77,7 @@ export const AmplifySection = () => {
             </p>
             <div className="flex items-center gap-6">
               <div>
-                <div className="text-5xl font-bold text-white mb-1">30,000+</div>
+                <div className="text-5xl font-semibold text-white mb-1">30,000+</div>
                 <p className="text-gray-400 text-xs">monthly active users</p>
               </div>
               <span className="text-7xl">⚡</span>

@@ -82,8 +82,11 @@ export const HowItWorksBrandsSection = () => {
 
         {/* Optional Premium Support */}
         <div className="mt-8 max-w-5xl mx-auto">
-          <div className="bg-teal-600 rounded-3xl p-10 text-left">
-            <div className="flex items-center justify-between flex-wrap gap-6">
+          <div className="bg-teal-600 rounded-3xl p-10 text-left relative overflow-hidden">
+            <div className="absolute top-4 left-4 bg-white rounded-full px-4 py-1">
+              <span className="text-sm font-bold text-teal-600">Step 5</span>
+            </div>
+            <div className="flex items-center justify-between flex-wrap gap-6 mt-12">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   Optional Premium Support

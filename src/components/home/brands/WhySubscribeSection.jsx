@@ -6,7 +6,7 @@ export const WhySubscribeSection = () => {
           WHY SUBSCRIBE TO FLOWVA?
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
           {/* Trusted by Leading Products */}
           <div className="bg-white rounded-3xl p-10 text-left">
             <h3 className="text-xl font-bold text-black mb-6 leading-tight">
@@ -17,8 +17,8 @@ export const WhySubscribeSection = () => {
             </h3>
           </div>
 
-          {/* Purple Cards */}
-          <div className="space-y-6">
+          {/* Purple and Pink Cards*/}
+          <div className="flex gap-6">
             <div className="bg-purple-500 rounded-3xl p-8 text-left">
               <div className="text-4xl mb-4">💎</div>
               <h4 className="text-lg font-bold text-white mb-2">Premium Value</h4>
@@ -34,13 +34,15 @@ export const WhySubscribeSection = () => {
               </p>
             </div>
           </div>
+        </div>
 
+        {/* Four Cards Grid*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
           {/* Orange Card */}
           <div className="bg-orange-500 rounded-3xl p-10 text-left">
             <div className="text-5xl mb-4">📱</div>
             <h4 className="text-xl font-bold text-white mb-3">
-              All-in-one<br />
-              Platform
+              All-in-one platform
             </h4>
             <p className="text-orange-100 text-sm">
               Manage everything from a single dashboard
@@ -51,8 +53,7 @@ export const WhySubscribeSection = () => {
           <div className="bg-blue-500 rounded-3xl p-10 text-left">
             <div className="text-5xl mb-4">🌐</div>
             <h4 className="text-xl font-bold text-white mb-3">
-              Global<br />
-              Reach
+              Global Reach
             </h4>
             <p className="text-blue-100 text-sm">
               Connect with audiences worldwide
@@ -63,8 +64,7 @@ export const WhySubscribeSection = () => {
           <div className="bg-pink-500 rounded-3xl p-10 text-left">
             <div className="text-5xl mb-4">💖</div>
             <h4 className="text-xl font-bold text-white mb-3">
-              Authentic<br />
-              Engagement
+              Authentic Engagement
             </h4>
             <p className="text-pink-100 text-sm">
               Build real connections with your audience
@@ -75,8 +75,7 @@ export const WhySubscribeSection = () => {
           <div className="bg-green-500 rounded-3xl p-10 text-left">
             <div className="text-5xl mb-4">📊</div>
             <h4 className="text-xl font-bold text-white mb-3">
-              Data-Driven<br />
-              Insights
+              Data-Driven Insights
             </h4>
             <p className="text-green-100 text-sm">
               Make informed decisions with analytics
@@ -86,16 +85,19 @@ export const WhySubscribeSection = () => {
 
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
-          <div>
+          <div className="space-y-5">
             <div className="text-5xl font-bold text-black mb-2">1200+</div>
+            <div className="border-b-2 border-gray-200 py-4"></div>
             <p className="text-gray-600 text-sm">Active Brands</p>
           </div>
-          <div>
+          <div className="space-y-5">
             <div className="text-5xl font-bold text-black mb-2">35M+</div>
+            <div className="border-b-2 border-gray-200 py-4"></div>
             <p className="text-gray-600 text-sm">Monthly Impressions</p>
           </div>
-          <div>
+          <div className="space-y-5">
             <div className="text-5xl font-bold text-black mb-2">4200+</div>
+            <div className="border-b-2 border-gray-200 py-4"></div>
             <p className="text-gray-600 text-sm">Successful Campaigns</p>
           </div>
         </div>

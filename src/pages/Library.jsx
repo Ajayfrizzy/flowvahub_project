@@ -131,7 +131,7 @@ export const Library = () => {
   if (loading) {
     return (
       <div className="min-h-screen pt-16 flex items-center justify-center">
-        <Loader className="animate-spin text-indigo-600" size={48} />
+        <Loader className="animate-spin text-blue-600" size={48} />
       </div>
     );
   }
@@ -155,7 +155,7 @@ export const Library = () => {
                 placeholder="Search tools..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export const Library = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -193,7 +193,7 @@ export const Library = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">{tool.name}</h3>
-                    <span className="inline-block mt-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">
+                    <span className="inline-block mt-2 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
                       {tool.category}
                     </span>
                   </div>
@@ -204,7 +204,7 @@ export const Library = () => {
                 <button
                   onClick={() => handleAddTool(tool)}
                   disabled={addingTool === tool.id}
-                  className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {addingTool === tool.id ? (
                     <>

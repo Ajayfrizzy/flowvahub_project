@@ -26,25 +26,13 @@ export const Home = () => {
       
       {activeTab === 'users' ? (
         <>
-          {/* Stats Section */}
+        {/* Users Content */}
           <StatsSection />
-          
-          {/* Features Carousel Section */}
           <FeaturesCarousel />
-          
-          {/* Mobile App and Benefits Section */}
           <MobileAppBenefitsSection />
-          
-          {/* How It Works Carousel */}
           <HowItWorksCarousel />
-          
-          {/* Testimonials Section */}
           <TestimonialsSection />
-          
-          {/* FAQs Section */}
           <NeedAnswerSection />
-          
-          {/* Final CTA Section */}
           <FinalCTASection />
         </>
       ) : (

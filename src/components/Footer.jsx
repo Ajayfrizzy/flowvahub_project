@@ -13,12 +13,12 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-gray-900 text-white pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Newsletter Section */}
-        <div className="text-center mb-12 pb-12 border-b border-gray-800">
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-4 border border-purple-400 rounded-full">
-            <div className="flex gap-2 bg-gray-800 rounded-full p-6">
+        <div className="text-center bg-gray-800 p-15 mb-20 max-w-2xl mx-auto rounded-b-2xl shadow-2xl">
+          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto mb-4 border border-purple-400 rounded-2xl">
+            <div className="flex gap-2 p-3">
               <input
                 type="email"
                 value={email}

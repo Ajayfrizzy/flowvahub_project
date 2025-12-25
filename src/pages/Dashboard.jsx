@@ -138,7 +138,7 @@ export const Dashboard = () => {
   if (loading) {
     return (
       <div className="min-h-screen pt-16 flex items-center justify-center">
-        <Loader className="animate-spin text-indigo-600" size={48} />
+        <Loader className="animate-spin text-blue-600" size={48} />
       </div>
     );
   }
@@ -162,8 +162,8 @@ export const Dashboard = () => {
                 <p className="text-gray-600 text-sm">My Tools</p>
                 <p className="text-3xl font-bold text-gray-900 mt-1">{myTools.length}</p>
               </div>
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                <Package className="text-indigo-600" size={24} />
+              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Package className="text-blue-600" size={24} />
               </div>
             </div>
           </div>
@@ -199,14 +199,14 @@ export const Dashboard = () => {
         <div className="flex gap-4 mb-8">
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+            className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
             <Plus size={20} />
             Add Tool
           </button>
           <Link
             to="/library"
-            className="flex items-center gap-2 bg-white text-indigo-600 border border-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+            className="flex items-center gap-2 bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
           >
             <Search size={20} />
             Discover Tools
@@ -232,7 +232,7 @@ export const Dashboard = () => {
               <p className="text-gray-600 mb-6">Start by adding your first tool or exploring our library</p>
               <button
                 onClick={() => setShowAddModal(true)}
-                className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Add Your First Tool
               </button>
@@ -274,7 +274,7 @@ export const Dashboard = () => {
                   type="text"
                   value={newTool.name}
                   onChange={(e) => setNewTool({ ...newTool, name: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
@@ -285,7 +285,7 @@ export const Dashboard = () => {
                 <select
                   value={newTool.category}
                   onChange={(e) => setNewTool({ ...newTool, category: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 >
                   <option value="">Select a category</option>
@@ -306,14 +306,14 @@ export const Dashboard = () => {
                   step="0.01"
                   value={newTool.cost}
                   onChange={(e) => setNewTool({ ...newTool, cost: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="0.00"
                 />
               </div>
               <div className="flex gap-3 mt-6">
                 <button
                   type="submit"
-                  className="flex-1 bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                  className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   Add Tool
                 </button>
