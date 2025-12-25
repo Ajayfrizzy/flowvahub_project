@@ -30,8 +30,8 @@ export const FeaturesCarousel = () => {
         </div>
         
         {/* Desktop 3D Carousel */}
-        <div className="hidden md:block relative h-[550px] flex items-center justify-center mx-12 mb-16" style={{ perspective: '2000px' }}>
-          <div className="relative w-full flex items-center justify-center">
+        <div className="hidden md:block relative h-[550px] mx-12 mb-16" style={{ perspective: '2000px' }}>
+          <div className="relative w-full h-full flex items-center justify-center">
             {features.map((feature, index) => {
               const position = index - featuresIndex;
               const isActive = position === 0;
@@ -73,7 +73,7 @@ export const FeaturesCarousel = () => {
                       <div className="relative">
                         {/* Decorative background elements */}
                         <div className="absolute inset-0 flex justify-center items-center">
-                          <div className={`rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 transition-all ${
+                          <div className={`rounded-full bg-linear-to-br from-indigo-100 to-purple-100 transition-all ${
                             isActive ? 'w-48 h-48' : 'w-40 h-40'
                           }`}></div>
                         </div>
